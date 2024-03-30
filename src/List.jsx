@@ -1,10 +1,28 @@
-function List(){
-  const fruits = [{name:"a",cal:"95"},
-  {name:"b",cal:"75"},
-  {name:"m",cal:"55"},
-  {name:"o",cal:"45"},
-  {name:"p",cal:"35"}];
-  const listitems = fruits.map((o) => <li>{o}</li>);
-  return (<ul>{listitems}</ul>);
+import PropTypes from 'prop-types'
+function List(props) {
+  const category = props.category;
+  const itemList = props.items;
+  const listItems = itemList.map((item) => (
+    <li key={item.id}>
+      {item.name}: &nbsp;
+      <b>{item.cal}</b>
+    </li>
+  ));
+
+  return (
+    <>
+      <h3 className="list-category">{category}</h3>
+      <ol className="list-items">{listItems}</ol>
+    </>
+  );
+}
+List.prototype={
+    category: PropTypes.string,
+    items:PropTypes.arrayOf(PropTypes.shape({id: PropTypes.number,name: PropTypes.string,cal: PropTypes.number})),
+}
+List.defaultProps={
+    category : "Category",
+    items:[],
+    
 }
 export default List;

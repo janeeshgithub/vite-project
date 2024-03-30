@@ -1,10 +1,8 @@
-import List from "./List";
+import Button from "./Button";
 
-function App() {
-  return (
-    <>
-      <List/>
-    </>
-  );
+function App()
+{
+  return <Button/>
 }
+
 export default App;
